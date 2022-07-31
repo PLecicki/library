@@ -1,24 +1,30 @@
-//package com.crud.library.domains;
-//
-//import lombok.AllArgsConstructor;
-//import lombok.Getter;
-//import lombok.NoArgsConstructor;
-//
-//import javax.persistence.*;
-//
-//@Entity(name = "copies")
-//@Getter
-//@NoArgsConstructor
-//@AllArgsConstructor
-//public class BookCopies {
-//
-//    @Id
-//    @GeneratedValue
-//    private Long bookCopyId;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "bookId")
-//    private Book book;
-//
-//    private String status;
-//}
+package com.crud.library.domains;
+
+import com.sun.istack.NotNull;
+import lombok.*;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import javax.persistence.*;
+
+@Entity(name = "copies")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class BookCopies {
+
+    @Id
+    @NotNull
+    @GeneratedValue
+    @Column(name = "book_copy_id", unique = true)
+    private Long bookCopyId;
+
+    @ManyToOne()
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @JoinColumn(name = "book_id")
+    private Book book;
+
+    private String status;
+}

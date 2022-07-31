@@ -1,29 +1,32 @@
-//package com.crud.library.domains;
-//
-//import lombok.AllArgsConstructor;
-//import lombok.Getter;
-//import lombok.NoArgsConstructor;
-//
-//import javax.persistence.Column;
-//import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.Id;
-//import java.time.LocalDate;
-//
-//@Getter
-//@AllArgsConstructor
-//@NoArgsConstructor
-//@Entity(name = "readers")
-//public class Reader {
-//
-//    @Id
-//    @GeneratedValue
-//    private Long readerId;
-//
-//    private String name;
-//
-//    private String surname;
-//
-//    @Column(name = "dateofbirth")
-//    private LocalDate birth;
-//}
+package com.crud.library.domains;
+
+import com.sun.istack.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import java.time.LocalDate;
+
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity(name = "readers")
+public class Reader {
+
+    @Id
+    @NotNull
+    @GeneratedValue
+    @Column(name = "reader_id", unique = true)
+    private Long readerId;
+
+    private String name;
+
+    private String surname;
+
+    @Column(name = "date_of_birth")
+    private LocalDate birth;
+}
