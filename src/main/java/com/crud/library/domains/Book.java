@@ -1,18 +1,18 @@
-package com.crud.library.domain;
+package com.crud.library.domains;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@Data
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "books")
+@Builder
 public class Book {
 
     @Id
@@ -23,6 +23,6 @@ public class Book {
 
     private String author;
 
-    @Column(name = "yearofpublishing")
+    @Column(name = "publishing_year")
     private Short year;
 }
