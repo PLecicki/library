@@ -52,7 +52,5 @@ public class BookRepositoryTests {
 
         //Then
         Assertions.assertEquals(Optional.empty(), bookRepository.findById(bookId));
-
-        //CleanUp
     }
 }
