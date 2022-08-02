@@ -50,6 +50,10 @@ public class DbService {
         return bookCopiesRepository.findById(bookCopiesId).orElseThrow(BookCopiesNotFoundException::new);
     }
 
+    public List<BookCopies> getBookCopiesByBookIdAndStatus(final Long bookId, final String status) throws BookCopiesNotFoundException {
+        return bookCopiesRepository.findByBook_BookIdAndStatus(bookId, status);
+    }
+
     public BookCopies saveBookCopy(final BookCopies bookCopies) {
         return bookCopiesRepository.save(bookCopies);
     }

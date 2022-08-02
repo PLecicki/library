@@ -1,6 +1,5 @@
 package com.crud.library.repositories;
 
-import com.crud.library.domains.Book;
 import com.crud.library.domains.Borrows;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;

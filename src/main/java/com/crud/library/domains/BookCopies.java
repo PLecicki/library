@@ -3,8 +3,6 @@ package com.crud.library.domains;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 
@@ -21,8 +19,9 @@ public class BookCopies {
     @Column(name = "book_copy_id", unique = true)
     private Long bookCopyId;
 
+    @NotNull
     @ManyToOne()
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @Cascade(org.hibernate.annotations.CascadeType.REPLICATE)
     @JoinColumn(name = "book_id")
     private Book book;
 

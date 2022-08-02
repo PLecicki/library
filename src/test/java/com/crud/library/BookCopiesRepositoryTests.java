@@ -20,6 +20,9 @@ public class BookCopiesRepositoryTests {
     @Autowired
     private BookCopiesRepository bookCopiesRepository;
 
+    @Autowired
+    private BookRepository bookRepository;
+
     @Test
     public void saveCopiesTest() {
         //Given
@@ -34,17 +37,18 @@ public class BookCopiesRepositoryTests {
 
         BookCopies bookCopy2 = new BookCopies();
         bookCopy2.setBook(book);
-        bookCopy2.setStatus("Available");
+        bookCopy2.setStatus("Borrowed");
 
         BookCopies bookCopy3 = new BookCopies();
         bookCopy3.setBook(book);
-        bookCopy3.setStatus("Broken");
+        bookCopy3.setStatus("Borrowed");
 
         book.getBookCopies().add(bookCopy1);
         book.getBookCopies().add(bookCopy2);
         book.getBookCopies().add(bookCopy3);
 
         //When
+        bookRepository.save(book);
         bookCopiesRepository.save(bookCopy1);
         bookCopiesRepository.save(bookCopy2);
         bookCopiesRepository.save(bookCopy3);
@@ -52,15 +56,13 @@ public class BookCopiesRepositoryTests {
         //Then
         Assertions.assertEquals("Borrowed",
                 bookCopiesRepository.findById(bookCopy1.getBookCopyId()).get().getStatus());
-        Assertions.assertEquals("Available",
+        Assertions.assertEquals("Borrowed",
                 bookCopiesRepository.findById(bookCopy2.getBookCopyId()).get().getStatus());
-        Assertions.assertEquals("Broken",
+        Assertions.assertEquals("Borrowed",
                 bookCopiesRepository.findById(bookCopy3.getBookCopyId()).get().getStatus());
 
         //CleanUp
-        bookCopiesRepository.delete(bookCopy1);
-        bookCopiesRepository.delete(bookCopy2);
-        bookCopiesRepository.delete(bookCopy3);
+        bookRepository.delete(book);
     }
 
     @Test
@@ -87,14 +89,13 @@ public class BookCopiesRepositoryTests {
         book.getBookCopies().add(bookCopy2);
         book.getBookCopies().add(bookCopy3);
 
+        bookRepository.save(book);
         bookCopiesRepository.save(bookCopy1);
         bookCopiesRepository.save(bookCopy2);
         bookCopiesRepository.save(bookCopy3);
 
         //When
-        bookCopiesRepository.delete(bookCopy1);
-        bookCopiesRepository.delete(bookCopy2);
-        bookCopiesRepository.delete(bookCopy3);
+        bookRepository.delete(book);
 
         //Then
         Assertions.assertEquals(Optional.empty(), bookCopiesRepository.findById(bookCopy1.getBookCopyId()));

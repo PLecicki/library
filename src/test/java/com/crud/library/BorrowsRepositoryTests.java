@@ -4,7 +4,10 @@ import com.crud.library.domains.Book;
 import com.crud.library.domains.BookCopies;
 import com.crud.library.domains.Borrows;
 import com.crud.library.domains.Reader;
+import com.crud.library.repositories.BookCopiesRepository;
+import com.crud.library.repositories.BookRepository;
 import com.crud.library.repositories.BorrowsRepository;
+import com.crud.library.repositories.ReaderRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -22,6 +25,15 @@ public class BorrowsRepositoryTests {
     @Autowired
     private BorrowsRepository borrowsRepository;
 
+    @Autowired
+    private BookCopiesRepository bookCopiesRepository;
+
+    @Autowired
+    private BookRepository bookRepository;
+
+    @Autowired
+    private ReaderRepository readerRepository;
+
     @Test
     void saveBorrowTest() {
         //Given
@@ -31,8 +43,8 @@ public class BorrowsRepositoryTests {
         reader.setBirth(LocalDate.of(1993, 4, 12));
 
         Book book = new Book();
-        book.setTitle("Title1");
-        book.setAuthor("Author1");
+        book.setTitle("AAAAAA");
+        book.setAuthor("BBBBBB");
         book.setYear((short)1999);
 
         BookCopies bookCopy = new BookCopies();
@@ -46,6 +58,9 @@ public class BorrowsRepositoryTests {
         borrows.setBorrowing(LocalDate.of(2023, 1, 23));
 
         //When
+        bookRepository.save(book);
+        bookCopiesRepository.save(bookCopy);
+        readerRepository.save(reader);
         borrowsRepository.save(borrows);
 
         //Then
@@ -53,6 +68,9 @@ public class BorrowsRepositoryTests {
 
         //CleanUp
         borrowsRepository.delete(borrows);
+        readerRepository.delete(reader);
+        bookCopiesRepository.delete(bookCopy);
+        bookRepository.delete(book);
     }
 
     @Test
@@ -78,10 +96,16 @@ public class BorrowsRepositoryTests {
         borrows.setBorrowing(LocalDate.of(2022, 6, 12));
         borrows.setBorrowing(LocalDate.of(2023, 1, 23));
 
+        bookRepository.save(book);
+        bookCopiesRepository.save(bookCopy);
+        readerRepository.save(reader);
         borrowsRepository.save(borrows);
 
         //When
         borrowsRepository.delete(borrows);
+        readerRepository.delete(reader);
+        bookCopiesRepository.delete(bookCopy);
+        bookRepository.delete(book);
 
         //Then
         Assertions.assertEquals(Optional.empty(), borrowsRepository.findById(borrows.getBorrowId()));

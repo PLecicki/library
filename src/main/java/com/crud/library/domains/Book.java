@@ -2,6 +2,7 @@ package com.crud.library.domains;
 
 import com.sun.istack.NotNull;
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -37,8 +38,9 @@ public class Book {
     @OneToMany(
             targetEntity = BookCopies.class,
             mappedBy = "book",
-            cascade = CascadeType.ALL,
             fetch = FetchType.EAGER
     )
+    @Cascade({org.hibernate.annotations.CascadeType.REPLICATE,
+    org.hibernate.annotations.CascadeType.DELETE})
     private List<BookCopies> bookCopies = new ArrayList<>();
 }
