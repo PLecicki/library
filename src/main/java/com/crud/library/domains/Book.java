@@ -14,6 +14,13 @@ import java.util.List;
 @Entity(name = "books")
 public class Book {
 
+    public Book(Long bookId, String title, String author, Short year) {
+        this.bookId = bookId;
+        this.title = title;
+        this.author = author;
+        this.year = year;
+    }
+
     @Id
     @NotNull
     @GeneratedValue

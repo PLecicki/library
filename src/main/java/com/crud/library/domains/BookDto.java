@@ -12,5 +12,6 @@ public class BookDto {
     private Long bookId;
     private String title;
     private String author;
-    private List<BookCopies> bookCopies = new ArrayList<>(); //TODO Maybe it is to delete
+    private Short year;
+    //private List<BookCopies> bookCopies = new ArrayList<>(); //TODO Maybe it is to delete
 }
