@@ -1,5 +1,6 @@
 package com.crud.library.service;
 
+import com.crud.library.constants.CopyStatus;
 import com.crud.library.controller.BookCopiesNotFoundException;
 import com.crud.library.controller.BookNotFoundException;
 import com.crud.library.controller.BorrowsNotFoundException;
@@ -50,7 +51,7 @@ public class DbService {
         return bookCopiesRepository.findById(bookCopiesId).orElseThrow(BookCopiesNotFoundException::new);
     }
 
-    public List<BookCopies> getBookCopiesByBookIdAndStatus(final Long bookId, final String status) throws BookCopiesNotFoundException {
+    public List<BookCopies> getBookCopiesByBookIdAndStatus(final Long bookId, final CopyStatus status) throws BookCopiesNotFoundException {
         return bookCopiesRepository.findByBook_BookIdAndStatus(bookId, status);
     }
 

@@ -1,5 +1,6 @@
 package com.crud.library;
 
+import com.crud.library.constants.CopyStatus;
 import com.crud.library.domains.Book;
 import com.crud.library.domains.BookCopies;
 import com.crud.library.repositories.BookCopiesRepository;
@@ -33,15 +34,15 @@ public class BookCopiesRepositoryTests {
 
         BookCopies bookCopy1 = new BookCopies();
         bookCopy1.setBook(book);
-        bookCopy1.setStatus("Borrowed");
+        bookCopy1.setStatus(CopyStatus.BORROWED);
 
         BookCopies bookCopy2 = new BookCopies();
         bookCopy2.setBook(book);
-        bookCopy2.setStatus("Borrowed");
+        bookCopy2.setStatus(CopyStatus.BORROWED);
 
         BookCopies bookCopy3 = new BookCopies();
         bookCopy3.setBook(book);
-        bookCopy3.setStatus("Borrowed");
+        bookCopy3.setStatus(CopyStatus.BORROWED);
 
         book.getBookCopies().add(bookCopy1);
         book.getBookCopies().add(bookCopy2);
@@ -54,11 +55,11 @@ public class BookCopiesRepositoryTests {
         bookCopiesRepository.save(bookCopy3);
 
         //Then
-        Assertions.assertEquals("Borrowed",
+        Assertions.assertEquals(CopyStatus.BORROWED,
                 bookCopiesRepository.findById(bookCopy1.getBookCopyId()).get().getStatus());
-        Assertions.assertEquals("Borrowed",
+        Assertions.assertEquals(CopyStatus.BORROWED,
                 bookCopiesRepository.findById(bookCopy2.getBookCopyId()).get().getStatus());
-        Assertions.assertEquals("Borrowed",
+        Assertions.assertEquals(CopyStatus.BORROWED,
                 bookCopiesRepository.findById(bookCopy3.getBookCopyId()).get().getStatus());
 
         //CleanUp
@@ -75,15 +76,15 @@ public class BookCopiesRepositoryTests {
 
         BookCopies bookCopy1 = new BookCopies();
         bookCopy1.setBook(book);
-        bookCopy1.setStatus("Borrowed");
+        bookCopy1.setStatus(CopyStatus.BORROWED);
 
         BookCopies bookCopy2 = new BookCopies();
         bookCopy2.setBook(book);
-        bookCopy2.setStatus("Available");
+        bookCopy2.setStatus(CopyStatus.AVAILABLE);
 
         BookCopies bookCopy3 = new BookCopies();
         bookCopy3.setBook(book);
-        bookCopy3.setStatus("Broken");
+        bookCopy3.setStatus(CopyStatus.BROKEN);
 
         book.getBookCopies().add(bookCopy1);
         book.getBookCopies().add(bookCopy2);

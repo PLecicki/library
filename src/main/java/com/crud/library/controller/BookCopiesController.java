@@ -1,5 +1,6 @@
 package com.crud.library.controller;
 
+import com.crud.library.constants.CopyStatus;
 import com.crud.library.domains.BookCopies;
 import com.crud.library.domains.BookCopiesDto;
 import com.crud.library.mapper.BookCopiesMapper;
@@ -35,7 +36,7 @@ public class BookCopiesController {
     public ResponseEntity<Integer> getQuantityOfAvailableCopies(@PathVariable Long bookId) throws BookNotFoundException {
         try {
             return ResponseEntity.ok(bookCopiesMapper.mapToBookCopiesDtoList(
-                    service.getBookCopiesByBookIdAndStatus(bookId, "Available")).size()
+                    service.getBookCopiesByBookIdAndStatus(bookId, CopyStatus.AVAILABLE)).size()
             );
         } catch (BookCopiesNotFoundException e) {
             return ResponseEntity.ok(0);

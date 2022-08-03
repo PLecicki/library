@@ -1,5 +1,6 @@
 package com.crud.library.domains;
 
+import com.crud.library.constants.CopyStatus;
 import com.sun.istack.NotNull;
 import lombok.*;
 import org.hibernate.annotations.Cascade;
@@ -25,5 +26,5 @@ public class BookCopies {
     @JoinColumn(name = "book_id")
     private Book book;
 
-    private String status;
+    private CopyStatus status;
 }

@@ -1,5 +1,6 @@
 package com.crud.library;
 
+import com.crud.library.constants.CopyStatus;
 import com.crud.library.domains.Book;
 import com.crud.library.domains.BookCopies;
 import com.crud.library.domains.Borrows;
@@ -49,7 +50,7 @@ public class BorrowsRepositoryTests {
 
         BookCopies bookCopy = new BookCopies();
         bookCopy.setBook(book);
-        bookCopy.setStatus("Borrowed");
+        bookCopy.setStatus(CopyStatus.BORROWED);
 
         Borrows borrows = new Borrows();
         borrows.setBookCopies(bookCopy);
@@ -88,7 +89,7 @@ public class BorrowsRepositoryTests {
 
         BookCopies bookCopy = new BookCopies();
         bookCopy.setBook(book);
-        bookCopy.setStatus("Borrowed");
+        bookCopy.setStatus(CopyStatus.BORROWED);
 
         Borrows borrows = new Borrows();
         borrows.setBookCopies(bookCopy);

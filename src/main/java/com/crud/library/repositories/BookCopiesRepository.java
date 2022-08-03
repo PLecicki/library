@@ -1,5 +1,6 @@
 package com.crud.library.repositories;
 
+import com.crud.library.constants.CopyStatus;
 import com.crud.library.domains.BookCopies;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -18,5 +19,5 @@ public interface BookCopiesRepository extends CrudRepository<BookCopies, Long> {
     @Override
     Optional<BookCopies> findById(Long id);
 
-    List<BookCopies> findByBook_BookIdAndStatus(Long bookId, String status);
+    List<BookCopies> findByBook_BookIdAndStatus(Long bookId, CopyStatus status);
 }
