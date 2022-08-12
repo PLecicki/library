@@ -12,7 +12,7 @@ public class ReaderMapper {
 
     public Reader mapToReader(final ReaderDto readerDto) {
         return new Reader(
-                readerDto.getReaderId(),
+                0L,
                 readerDto.getName(),
                 readerDto.getSurname(),
                 readerDto.getBirth()
@@ -21,7 +21,6 @@ public class ReaderMapper {
 
     public ReaderDto mapToReaderDto(final Reader reader) {
         return new ReaderDto(
-                reader.getReaderId(),
                 reader.getName(),
                 reader.getSurname(),
                 reader.getBirth()

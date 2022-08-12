@@ -6,7 +6,8 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class BookCopiesDto {
+public class EditBookCopyDto {
+    private Long bookCopyId;
     private Book book;
     private CopyStatus status;
 }

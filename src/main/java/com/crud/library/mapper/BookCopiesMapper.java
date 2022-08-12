@@ -2,6 +2,7 @@ package com.crud.library.mapper;
 
 import com.crud.library.domains.BookCopies;
 import com.crud.library.domains.BookCopiesDto;
+import com.crud.library.domains.EditBookCopyDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,15 +13,22 @@ public class BookCopiesMapper {
 
     public BookCopies mapToBookCopies(final BookCopiesDto bookCopiesDto) {
         return new BookCopies(
-              bookCopiesDto.getBookCopyId(),
+              0L,
               bookCopiesDto.getBook(),
               bookCopiesDto.getStatus()
         );
     }
 
+    public BookCopies mapToBookCopies(final EditBookCopyDto editBookCopyDto) {
+        return new BookCopies(
+                editBookCopyDto.getBookCopyId(),
+                editBookCopyDto.getBook(),
+                editBookCopyDto.getStatus()
+        );
+    }
+
     public BookCopiesDto mapToBookCopiesDto(final BookCopies bookCopies) {
         return new BookCopiesDto(
-                bookCopies.getBookCopyId(),
                 bookCopies.getBook(),
                 bookCopies.getStatus()
         );

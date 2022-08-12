@@ -12,7 +12,7 @@ public class BookMapper {
 
     public Book mapToBook(final BookDto bookDto) {
         return new Book(
-                bookDto.getBookId(),
+                0L,
                 bookDto.getTitle(),
                 bookDto.getAuthor(),
                 bookDto.getYear()
@@ -21,7 +21,6 @@ public class BookMapper {
 
     public BookDto mapToBookDto(final Book book) {
         return new BookDto(
-                book.getBookId(),
                 book.getTitle(),
                 book.getAuthor(),
                 book.getYear()

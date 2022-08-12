@@ -12,7 +12,7 @@ public class BorrowsMapper {
 
     public Borrows mapToBorrows(final BorrowsDto borrowsDto) {
         return new Borrows(
-                borrowsDto.getBorrowId(),
+                0L,
                 borrowsDto.getBookCopies(),
                 borrowsDto.getReader(),
                 borrowsDto.getBorrowing(),
@@ -22,7 +22,6 @@ public class BorrowsMapper {
 
     public BorrowsDto mapToBorrowsDto(final Borrows borrows) {
         return new BorrowsDto(
-                borrows.getBorrowId(),
                 borrows.getBookCopies(),
                 borrows.getReader(),
                 borrows.getBorrowing(),

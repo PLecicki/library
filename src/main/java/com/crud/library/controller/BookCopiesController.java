@@ -3,6 +3,7 @@ package com.crud.library.controller;
 import com.crud.library.constants.CopyStatus;
 import com.crud.library.domains.BookCopies;
 import com.crud.library.domains.BookCopiesDto;
+import com.crud.library.domains.EditBookCopyDto;
 import com.crud.library.mapper.BookCopiesMapper;
 import com.crud.library.service.DbService;
 import lombok.RequiredArgsConstructor;
@@ -26,8 +27,8 @@ public class BookCopiesController {
     }
 
     @PutMapping
-    public ResponseEntity<BookCopiesDto> updateBookCopy(@RequestBody BookCopiesDto bookCopiesDto) {
-        BookCopies bookCopies = bookCopiesMapper.mapToBookCopies(bookCopiesDto);
+    public ResponseEntity<BookCopiesDto> updateBookCopy(@RequestBody EditBookCopyDto editBookCopyDto) {
+        BookCopies bookCopies = bookCopiesMapper.mapToBookCopies(editBookCopyDto);
         BookCopies savedBookCopies = service.saveBookCopy(bookCopies);
         return ResponseEntity.ok(bookCopiesMapper.mapToBookCopiesDto(savedBookCopies));
     }
